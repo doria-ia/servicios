@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anderson Doria | Arquitectura TI & Consultoría Operativa Global</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#F8FAFC',
+                            100: '#F1F5F9',
+                            200: '#E2E8F0',
+                            300: '#CBD5E1',
+                            400: '#94A3B8',
+                            500: '#64748B',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1E293B',
+                            900: '#0F172A',
+                            darkBg: '#0B0F19',
+                            darkCard: '#131B2E',
+                            accent: '#2563EB',
+                            accentHover: '#1D4ED8',
+                            emerald: '#059669',
+                            emeraldLight: '#D1FAE5',
+                            amber: '#D97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Menlo', 'monospace']
+                    },
+                    boxShadow: {
+                        'subtle': '0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.02)',
+                        'card': '0 4px 24px -4px rgba(15, 23, 42, 0.06)',
+                        'float': '0 16px 36px -6px rgba(15, 23, 42, 0.12)',
+                        'modal': '0 24px 48px -12px rgba(15, 23, 42, 0.2)',
+                        'glow': '0 0 25px -2px rgba(37, 99, 235, 0.4)',
+                        'glowEmerald': '0 0 25px -2px rgba(5, 150, 105, 0.4)'
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.08)' }
+                        },
+                        floatSlow: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-6px)' }
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 6s ease-in-out infinite',
+                        'float-slow': 'floatSlow 4s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Modern Gradient Orbs for Hero Premium Vibe */
+        .hero-orb-1 {
+            background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0) 70%);
+        }
+        .hero-orb-2 {
+            background: radial-gradient(circle, rgba(5,150,105,0.15) 0%, rgba(5,150,105,0) 70%);
+        }
+
+        .grid-pattern-tech {
+            background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        .dark .grid-pattern-tech {
+            background-image: radial-gradient(#1E293B 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-card {
+            background: rgba(19, 27, 46, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 41, 59, 0.8);
+        }
+
+        /* Hover Tech Card Effects */
+        .tech-card-interactive {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tech-card-interactive:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: #2563EB;
+            box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.18);
+        }
+        .dark .tech-card-interactive:hover {
+            border-color: #3B82F6;
+            box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.35);
+        }
+
+        .dark-card-hover {
+            transition: all 0.3s ease;
+        }
+        .dark-card-hover:hover {
+            transform: translateY(-4px);
+            border-color: #2563EB;
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-slate-50/70 dark:bg-brand-darkBg text-brand-900 dark:text-brand-100 antialiased selection:bg-brand-accent selection:text-white transition-colors duration-300">
+
+    <!-- Executive Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-brand-darkBg/90 backdrop-blur-md border-b border-brand-200/80 dark:border-brand-800 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div class="relative w-11 h-11 rounded-xl bg-gradient-to-br from-brand-900 via-brand-800 to-brand-accent text-white flex items-center justify-center font-mono font-black text-base tracking-tighter shadow-md group-hover:shadow-glow transition-all duration-300 border border-white/20">
+                    <span class="tracking-tighter">A<span class="text-brand-accent">D</span></span>
+                    <span class="absolute -top-1 -right-1 w-3 h-3 bg-brand-emerald rounded-full border-2 border-white dark:border-brand-darkBg"></span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-base font-extrabold tracking-tight text-brand-900 dark:text-white leading-none group-hover:text-brand-accent transition-colors">ANDERSON DORIA</span>
+                    <span class="text-[10px] font-bold text-brand-500 dark:text-brand-400 tracking-wider uppercase mt-1">Arquitectura TI & Eficiencia Operativa Global</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-6">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/80 dark:bg-brand-800/60 border border-brand-accent/20 dark:border-brand-700 text-xs font-semibold text-brand-accent dark:text-brand-300 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-brand-emerald animate-pulse"></span>
+                    <span>🌎 Alcance Global: Presencial Nacional & Operación Remota Internacional</span>
+                </div>
+                
+                <nav class="flex items-center gap-6 text-sm font-medium text-brand-600 dark:text-brand-300">
+                    <a href="#pilares" class="hover:text-brand-accent dark:hover:text-white transition-colors">Soluciones</a>
+                    <a href="#desglose" class="hover:text-brand-accent dark:hover:text-white transition-colors">Capacidades</a>
+                    <a href="#contacto" class="hover:text-brand-accent dark:hover:text-white transition-colors">Contacto</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle Switch -->
+                <button id="theme-toggle" class="p-2.5 rounded-xl bg-white dark:bg-brand-800 text-brand-700 dark:text-brand-300 hover:text-brand-accent transition-all text-sm border border-brand-200 dark:border-brand-700 shadow-subtle" aria-label="Cambiar Tema">
+                    <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden"></i>
+                    <i id="theme-toggle-light-icon" class="fa-solid fa-sun"></i>
+                </button>
+
+                <a href="https://wa.me/573026461119?text=Hola%20Anderson,%20me%20interesa%20agendar%20una%20sesi%C3%B3n%20diagn%C3%B3stica%20para%20mi%20empresa." target="_blank" rel="noopener noreferrer" class="hidden sm:flex px-5 py-2.5 rounded-xl bg-brand-900 dark:bg-brand-accent hover:bg-brand-accent text-white font-semibold text-xs tracking-wide uppercase shadow-subtle hover:shadow-card transition-all items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-sm text-brand-emerald"></i>
+                    <span>Optimizar Mi Negocio</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION ENHANCED WITH GRADIENTS & VISUAL DEPTH -->
+    <section class="relative pt-36 pb-20 md:pt-48 md:pb-28 overflow-hidden grid-pattern-tech">
+        <!-- Glowing Orbs in Background -->
+        <div class="absolute top-1/4 -left-20 w-96 h-96 hero-orb-1 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+        <div class="absolute bottom-10 right-0 w-[30rem] h-[30rem] hero-orb-2 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-2 text-xs font-mono font-bold text-brand-accent uppercase tracking-widest bg-brand-accent/10 dark:bg-brand-accent/20 px-4 py-1.5 rounded-full border border-brand-accent/20 shadow-sm backdrop-blur-md">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent animate-ping"></span>
+                    <i class="fa-solid fa-earth-americas text-sm"></i> CONSULTORÍA TI & EFICIENCIA OPERATIVA SIN FRONTERAS
+                </div>
+                
+                <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-brand-900 dark:text-white leading-[1.12]">
+                    Tecnología que multiplica el tiempo y el control de su empresa.
+                </h1>
+
+                <p class="mt-6 text-lg sm:text-xl text-brand-600 dark:text-brand-300 font-normal leading-relaxed max-w-3xl">
+                    Elimino los cuellos de botella en su negocio: automatizo procesos manuales, aseguro su información en la Nube y garantizo que sus sistemas y redes funcionen sin interrupciones.
+                </p>
+
+                <div class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                    <a href="https://wa.me/573026461119?text=Hola%20Anderson,%20deseo%20agendar%20una%20sesi%C3%B3n%20diagn%C3%B3stica%20para%20mi%20empresa." target="_blank" class="px-8 py-4 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-white font-bold text-sm shadow-glow hover:scale-[1.02] transition-all text-center flex items-center justify-center gap-3">
+                        <span>Agendar Sesión Diagnóstica por WhatsApp</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="#pilares" class="px-8 py-4 rounded-xl bg-white dark:bg-brand-darkCard border border-brand-300 dark:border-brand-700 text-brand-800 dark:text-brand-200 hover:bg-brand-50 dark:hover:bg-brand-800 font-bold text-sm shadow-subtle transition-all text-center flex items-center justify-center gap-2">
+                        <span>Ver Lo Que Hacemos</span>
+                        <i class="fa-solid fa-angle-down text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICS BAR (DYNAMIC METRICS WITH GLOW & HOVER EFFECT) -->
+    <section class="py-10 bg-gradient-to-r from-brand-900 via-slate-900 to-brand-900 text-white border-y border-brand-800 relative z-20 shadow-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-5 rounded-2xl bg-brand-800/50 border border-brand-700/60 backdrop-blur-md hover:border-brand-accent transition-all transform hover:-translate-y-1">
+                    <div class="text-3xl font-extrabold font-mono text-brand-accent drop-shadow-sm">+40 h/mes</div>
+                    <div class="text-xs font-medium text-brand-300 mt-1">Ahorro Promedio por Área</div>
+                </div>
+                <div class="p-5 rounded-2xl bg-brand-800/50 border border-brand-700/60 backdrop-blur-md hover:border-brand-emerald transition-all transform hover:-translate-y-1">
+                    <div class="text-3xl font-extrabold font-mono text-brand-emerald drop-shadow-sm">100% Cloud</div>
+                    <div class="text-xs font-medium text-brand-300 mt-1">Trabajo Híbrido Cero USBs</div>
+                </div>
+                <div class="p-5 rounded-2xl bg-brand-800/50 border border-brand-700/60 backdrop-blur-md hover:border-brand-amber transition-all transform hover:-translate-y-1">
+                    <div class="text-3xl font-extrabold font-mono text-brand-amber drop-shadow-sm">Escalable</div>
+                    <div class="text-xs font-medium text-brand-300 mt-1">De Pocos a Múltiples Puntos</div>
+                </div>
+                <div class="p-5 rounded-2xl bg-brand-800/50 border border-brand-700/60 backdrop-blur-md hover:border-purple-400 transition-all transform hover:-translate-y-1">
+                    <div class="text-3xl font-extrabold font-mono text-purple-400 drop-shadow-sm">99.9%</div>
+                    <div class="text-xs font-medium text-brand-300 mt-1">Disponibilidad en Facturación</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ULTRA-CLEAN 4 PILLARS WITH HIGH IMPACT CARDS -->
+    <section id="pilares" class="py-24 bg-white dark:bg-brand-darkBg transition-colors relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-mono font-semibold text-brand-accent uppercase tracking-widest bg-blue-50 dark:bg-brand-800 px-4 py-1.5 rounded-full border border-brand-accent/20">Enfoque Claro & Directo</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brand-900 dark:text-white tracking-tight mt-3">4 Soluciones que Su Empresa Necesita Hoy</h2>
+                <p class="mt-4 text-brand-600 dark:text-brand-400 text-base leading-relaxed">Resultados de negocio medibles, sin complicaciones técnicas ni jerga innecesaria.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Pilar 1 -->
+                <div class="p-8 rounded-3xl glass-card tech-card-interactive flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-brand-accent text-white flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform shadow-glow">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <span class="text-xs font-mono font-bold text-brand-accent uppercase tracking-wider">01. Imagen & Ventas</span>
+                        <h3 class="text-2xl font-extrabold text-brand-900 dark:text-white mt-1 mb-3">Páginas Web & Presencia Digital</h3>
+                        <p class="text-brand-600 dark:text-brand-300 text-sm leading-relaxed mb-6">
+                            Diseñamos la cara digital de su empresa con páginas web modernas, rápidas y profesionales que generan confianza instantánea y atraen clientes en automático las 24 horas.
+                        </p>
+                    </div>
+                    <button onclick="openModal('modal-1')" class="inline-flex items-center gap-2 text-xs font-bold text-brand-accent hover:text-brand-accentHover underline self-start">
+                        <span>Ver detalles técnicos e infraestructura</span>
+                        <i class="fa-solid fa-chevron-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+
+                <!-- Pilar 2 -->
+                <div class="p-8 rounded-3xl glass-card tech-card-interactive flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-brand-emerald text-white flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform shadow-glowEmerald">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <span class="text-xs font-mono font-bold text-brand-emerald uppercase tracking-wider">02. Trabajo Híbrido</span>
+                        <h3 class="text-2xl font-extrabold text-brand-900 dark:text-white mt-1 mb-3">Información en la Nube (Sin Memorias USB)</h3>
+                        <p class="text-brand-600 dark:text-brand-300 text-sm leading-relaxed mb-6">
+                            Acceda a todos los archivos de su empresa desde cualquier lugar del mundo a un clic. Eliminamos las memorias USB, controlamos quién puede ver o editar cada documento y respaldamos su información diariamente.
+                        </p>
+                    </div>
+                    <button onclick="openModal('modal-2')" class="inline-flex items-center gap-2 text-xs font-bold text-brand-emerald hover:text-emerald-700 underline self-start">
+                        <span>Ver detalles técnicos e infraestructura</span>
+                        <i class="fa-solid fa-chevron-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+
+                <!-- Pilar 3 -->
+                <div class="p-8 rounded-3xl glass-card tech-card-interactive flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-brand-amber text-white flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform shadow-md">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <span class="text-xs font-mono font-bold text-brand-amber uppercase tracking-wider">03. Protección & Redes</span>
+                        <h3 class="text-2xl font-extrabold text-brand-900 dark:text-white mt-1 mb-3">Cámaras de Seguridad & Wi-Fi Blindado</h3>
+                        <p class="text-brand-600 dark:text-brand-300 text-sm leading-relaxed mb-6">
+                            Monitoree sus instalaciones en HD directo en su celular y estructuramos su cableado de red (desde pequeñas oficinas hasta múltiples puntos conectados) para que la facturación nunca se detenga.
+                        </p>
+                    </div>
+                    <button onclick="openModal('modal-3')" class="inline-flex items-center gap-2 text-xs font-bold text-brand-amber hover:text-amber-700 underline self-start">
+                        <span>Ver detalles técnicos e infraestructura</span>
+                        <i class="fa-solid fa-chevron-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+
+                <!-- Pilar 4 -->
+                <div class="p-8 rounded-3xl glass-card tech-card-interactive flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-800 text-white flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform shadow-md">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <span class="text-xs font-mono font-bold text-purple-700 dark:text-purple-400 uppercase tracking-wider">04. Eficiencia Operativa</span>
+                        <h3 class="text-2xl font-extrabold text-brand-900 dark:text-white mt-1 mb-3">Automatización & Reportes Gerenciales</h3>
+                        <p class="text-brand-600 dark:text-brand-300 text-sm leading-relaxed mb-6">
+                            Reemplazamos planillas de Excel desordenadas por herramientas hechas a la medida que le ahorran horas al mes a su equipo y le muestran el estado de su negocio en tiempo real.
+                        </p>
+                    </div>
+                    <button onclick="openModal('modal-4')" class="inline-flex items-center gap-2 text-xs font-bold text-purple-700 dark:text-purple-400 hover:underline self-start">
+                        <span>Ver detalles técnicos e infraestructura</span>
+                        <i class="fa-solid fa-chevron-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: DESGLOSE TÉCNICO INTERACTIVO -->
+    <section id="desglose" class="py-24 bg-brand-900 dark:bg-black text-white border-t border-brand-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-brand-800 gap-4">
+                <div>
+                    <span class="text-xs font-mono font-semibold text-brand-accent uppercase tracking-widest bg-brand-800 px-3.5 py-1.5 rounded-md border border-brand-700">Capacidad Operativa Completa</span>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Matriz Técnica de Especialidades & Servicios 360°</h3>
+                </div>
+                <p class="text-xs text-brand-400 max-w-md leading-relaxed">Soluciones adaptables desde infraestructuras pequeñas de oficina hasta redes corporativas de alta densidad.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Columna 1 -->
+                <div class="bg-brand-800/40 dark:bg-brand-darkCard/80 p-6 rounded-2xl border border-brand-700/60 dark-card-hover">
+                    <div class="flex items-center gap-3 text-brand-accent mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                            <i class="fa-solid fa-shield-cat text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-base text-white">Seguridad & CCTV</h4>
+                    </div>
+                    <ul class="text-xs text-brand-300 space-y-3 font-mono">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Enrutamiento NVR / DVR Dahua & Hikvision</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Configuración de Canales de Audio</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Mantenimiento Físico & Limpieza Preventiva</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Acceso Remoto Seguro en Dispositivos Móviles</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Control de Acceso & Intercomunicadores</li>
+                    </ul>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="bg-brand-800/40 dark:bg-brand-darkCard/80 p-6 rounded-2xl border border-brand-700/60 dark-card-hover">
+                    <div class="flex items-center gap-3 text-brand-emerald mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                            <i class="fa-solid fa-network-wired text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-base text-white">Infraestructura & Redes</h4>
+                    </div>
+                    <ul class="text-xs text-brand-300 space-y-3 font-mono">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Redes Satelitales Starlink Redundantes</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Plataforma TP-Link Omada (VLANs / SSID)</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Cableado Estructurado a Cualquier Escala</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Aislamiento Estricto de Tráfico de Invitados</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Ponchado, Certificación & Racks de Red</li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3 -->
+                <div class="bg-brand-800/40 dark:bg-brand-darkCard/80 p-6 rounded-2xl border border-brand-700/60 dark-card-hover">
+                    <div class="flex items-center gap-3 text-brand-amber mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                            <i class="fa-solid fa-cloud-arrow-up text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-base text-white">Nube & Automatización</h4>
+                    </div>
+                    <ul class="text-xs text-brand-300 space-y-3 font-mono">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Google Apps Script (Web Apps a Medida)</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Migración a Google Workspace & Office 365</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Permisos Basados en Roles (RBAC)</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Erradicación de Memorias USB</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Copias de Seguridad Diarias Automáticas</li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4 -->
+                <div class="bg-brand-800/40 dark:bg-brand-darkCard/80 p-6 rounded-2xl border border-brand-700/60 dark-card-hover">
+                    <div class="flex items-center gap-3 text-purple-400 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                            <i class="fa-solid fa-sliders text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-base text-white">Gestión TI & Calidad</h4>
+                    </div>
+                    <ul class="text-xs text-brand-300 space-y-3 font-mono">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Puente Operación ↔ Equipo de Desarrollo</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Soporte en Auditorías de Calidad & Entes</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Mantenimiento Preventivo de Hardware/PCs</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Marketing Digital (Meta Ads & Canva)</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-emerald text-xs"></i> Dashboards Gerenciales en Tiempo Real</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & CONTACT ENHANCED -->
+    <section id="contacto" class="py-24 bg-gradient-to-b from-white to-slate-100 dark:from-brand-darkBg dark:to-black text-brand-900 dark:text-white border-t border-brand-200 dark:border-brand-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-xs font-mono font-semibold text-brand-accent uppercase tracking-widest bg-blue-50 dark:bg-brand-800 px-4 py-1.5 rounded-full border border-brand-accent/20">Diagnóstico Inmediato</span>
+            <h2 class="text-3xl sm:text-5xl font-black mt-4 tracking-tight">¿Listo para ordenar y escalar la tecnología de su negocio?</h2>
+            <p class="mt-4 text-brand-600 dark:text-brand-300 text-base max-w-2xl mx-auto leading-relaxed">Agende una sesión diagnóstica gerencial de 30 minutos sin costo. Analizamos su situación actual y definimos la estrategia adecuada.</p>
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/573026461119?text=Hola%20Anderson,%20deseo%20agendar%20una%20sesi%C3%B3n%20diagn%C3%B3stica%20para%20mi%20empresa." target="_blank" class="px-8 py-4 rounded-xl bg-brand-emerald hover:bg-emerald-600 text-white font-bold text-sm shadow-glowEmerald hover:scale-105 transition-all inline-flex items-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Contactar por WhatsApp (+57 302 6461119)</span>
+                </a>
+            </div>
+            <p class="mt-16 text-xs text-brand-500 dark:text-brand-400 font-medium">&copy; 2026 Anderson Doria. Todos los derechos reservados.</p>
+        </div>
+    </section>
+
+    <!-- FLOATING PERMANENT WHATSAPP BUTTON WITH BADGE -->
+    <a href="https://wa.me/573026461119?text=Hola%20Anderson,%20me%20interesa%20agendar%20una%20sesi%C3%B3n%20diagn%C3%B3stica%20para%20optimizar%20la%20operaci%C3%B3n%20de%20mi%20empresa." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-brand-emerald text-white flex items-center justify-center text-2xl shadow-float hover:scale-110 transition-transform animate-float-slow group" aria-label="WhatsApp Directo">
+        <i class="fa-brands fa-whatsapp"></i>
+        <!-- Glowing Ring Notification Badge -->
+        <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-brand-darkBg flex items-center justify-center">
+            <span class="w-2 h-2 bg-white rounded-full animate-ping"></span>
+        </span>
+        <!-- Tooltip on hover -->
+        <span class="absolute right-16 bg-brand-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-modal">
+            ¿Hablamos por WhatsApp?
+        </span>
+    </a>
+
+    <!-- MODALES DE DETALLE TÉCNICO -->
+    <div id="modal-1" class="fixed inset-0 z-50 hidden bg-brand-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-brand-darkCard text-brand-900 dark:text-white rounded-3xl max-w-lg w-full p-8 shadow-modal border border-brand-200 dark:border-brand-700 relative">
+            <button onclick="closeModal('modal-1')" class="absolute top-6 right-6 text-brand-400 hover:text-brand-900 dark:hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="w-10 h-10 rounded-xl bg-brand-accent text-white flex items-center justify-center text-lg font-bold mb-4">
+                <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Desglose Técnico: Páginas Web & Presencia Digital</h4>
+            <p class="text-xs text-brand-600 dark:text-brand-300 mb-6 leading-relaxed">
+                Desarrollo sobre arquitecturas ligeras HTML5/TailwindCSS sin plugins pesados que ralenticen la carga. Integración con servidores cPanel/Hostinger, parametrización de registros DNS, certificados de seguridad SSL y captura de prospectos conectada a WhatsApp y Email Marketing.
+            </p>
+            <button onclick="closeModal('modal-1')" class="w-full py-3 rounded-xl bg-brand-900 dark:bg-brand-accent text-white text-xs font-bold uppercase">Entendido</button>
+        </div>
+    </div>
+
+    <div id="modal-2" class="fixed inset-0 z-50 hidden bg-brand-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-brand-darkCard text-brand-900 dark:text-white rounded-3xl max-w-lg w-full p-8 shadow-modal border border-brand-200 dark:border-brand-700 relative">
+            <button onclick="closeModal('modal-2')" class="absolute top-6 right-6 text-brand-400 hover:text-brand-900 dark:hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="w-10 h-10 rounded-xl bg-brand-emerald text-white flex items-center justify-center text-lg font-bold mb-4">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Desglose Técnico: Nube & Trabajo Híbrido</h4>
+            <p class="text-xs text-brand-600 dark:text-brand-300 mb-6 leading-relaxed">
+                Migración completa a Google Workspace / Microsoft 365. Configuración de permisos de acceso basado en roles (RBAC), sincronización automática en tiempo real, erradicación de memorias USB vulnerables y políticas de backups diarios cifrados en la Nube.
+            </p>
+            <button onclick="closeModal('modal-2')" class="w-full py-3 rounded-xl bg-brand-900 dark:bg-brand-accent text-white text-xs font-bold uppercase">Entendido</button>
+        </div>
+    </div>
+
+    <div id="modal-3" class="fixed inset-0 z-50 hidden bg-brand-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-brand-darkCard text-brand-900 dark:text-white rounded-3xl max-w-lg w-full p-8 shadow-modal border border-brand-200 dark:border-brand-700 relative">
+            <button onclick="closeModal('modal-3')" class="absolute top-6 right-6 text-brand-400 hover:text-brand-900 dark:hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="w-10 h-10 rounded-xl bg-brand-amber text-white flex items-center justify-center text-lg font-bold mb-4">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Desglose Técnico: CCTV & Redes Omada/Starlink</h4>
+            <p class="text-xs text-brand-600 dark:text-brand-300 mb-6 leading-relaxed">
+                Instalación y mantenimiento de DVR/NVR (Dahua/Hikvision), enrutamiento de canales de audio, visualización móvil segura P2P/DDNS. En redes: cableado estructurado adaptable a cualquier escala (desde oficinas pequeñas hasta múltiples puntos corporativos), balanceo de carga Starlink y segmentación de SSIDs en TP-Link Omada.
+            </p>
+            <button onclick="closeModal('modal-3')" class="w-full py-3 rounded-xl bg-brand-900 dark:bg-brand-accent text-white text-xs font-bold uppercase">Entendido</button>
+        </div>
+    </div>
+
+    <div id="modal-4" class="fixed inset-0 z-50 hidden bg-brand-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-brand-darkCard text-brand-900 dark:text-white rounded-3xl max-w-lg w-full p-8 shadow-modal border border-brand-200 dark:border-brand-700 relative">
+            <button onclick="closeModal('modal-4')" class="absolute top-6 right-6 text-brand-400 hover:text-brand-900 dark:hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="w-10 h-10 rounded-xl bg-purple-700 text-white flex items-center justify-center text-lg font-bold mb-4">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Desglose Técnico: Automatización & Reportes</h4>
+            <p class="text-xs text-brand-600 dark:text-brand-300 mb-6 leading-relaxed">
+                Programación de Web Apps personalizadas en Google Apps Script (HTML/JS + Sheets como DB ligera). Levantamiento de requerimientos operativos traducidos a desarrolladores software y arquitectura de tableros ejecutivos en tiempo real.
+            </p>
+            <button onclick="closeModal('modal-4')" class="w-full py-3 rounded-xl bg-brand-900 dark:bg-brand-accent text-white text-xs font-bold uppercase">Entendido</button>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            lightIcon.classList.remove('hidden');
+            darkIcon.classList.add('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+            lightIcon.classList.add('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
